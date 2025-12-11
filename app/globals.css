@@ -1,59 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  /* Rustic Italian Palette */
-  --background: #FDF6E3; /* Warm Cream */
-  --foreground: #2C1810; /* Dark Brown */
-  
-  --primary: #C0392B; /* Rustic Red */
-  --primary-foreground: #FFFFFF;
-  
-  --secondary: #D35400; /* Terracotta */
+  /* Premium Dark Italian Palette */
+  --background: #121212;
+  /* Dark Charcoal */
+  --foreground: #E0E0E0;
+  /* Off-white */
+
+  --primary: #D4AF37;
+  /* Metallic Gold */
+  --primary-foreground: #121212;
+
+  --secondary: #7B241C;
+  /* Deep Burgundy */
   --secondary-foreground: #FFFFFF;
-  
-  --accent: #27AE60; /* Basil Green */
-  --accent-foreground: #FFFFFF;
-  
-  --muted: #E5D8C5; /* Beige Muted */
-  --muted-foreground: #7F8C8D;
-  
-  --card: #FFFFFF;
-  --card-foreground: #2C1810;
-  
-  --border: #E5D8C5;
+
+  --accent: #D4AF37;
+  /* Gold Accent */
+  --accent-foreground: #121212;
+
+  --muted: #1E1E1E;
+  /* Dark Grey */
+  --muted-foreground: #A0A0A0;
+
+  --card: #1E1E1E;
+  --card-foreground: #E0E0E0;
+
+  --border: #333333;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  
+
   --color-border: var(--border);
 
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
 
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37];
+  }
+
+  .text-shadow-sm {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
 }

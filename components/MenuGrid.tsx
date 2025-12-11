@@ -1,68 +1,92 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const menuItems = [
     {
-        id: 1,
+        name: "Truffle Carbonara",
+        description: "Fresh tagliatelle, guanciale, pecorino romano, black truffle shavings.",
+        price: "$28",
+        image: "/img/pasta_carbonara.png",
+    },
+    {
         name: "Pizza Margherita",
-        description: "San Marzano tomato sauce, fresh mozzarella di bufala, basil, extra virgin olive oil.",
-        price: "$18",
-        image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1000&auto=format&fit=crop"
+        description: "San Marzano tomato sauce, buffalo mozzarella, fresh basil, extra virgin olive oil.",
+        price: "$22",
+        image: "/img/italian_pizza.png",
     },
     {
-        id: 2,
-        name: "Tagliatelle al Tartufo",
-        description: "Handmade ribbon pasta, black truffle cream sauce, parmesan, fresh parsley.",
-        price: "$24",
-        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop"
+        name: "Osso Buco",
+        description: "Braised veal shanks, saffron risotto, gremolata.",
+        price: "$34",
+        image: "/img/antipasto_platter.png", // Using placeholder for now
     },
     {
-        id: 3,
         name: "Classic Tiramisu",
-        description: "Espresso-soaked ladyfingers, mascarpone cream, cocoa powder dust.",
-        price: "$12",
-        image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=1000&auto=format&fit=crop"
-    }
+        description: "Espresso-soaked ladyfingers, mascarpone cream, cocoa powder.",
+        price: "$14",
+        image: "/img/tiramisu.png",
+    },
 ];
 
 export function MenuGrid() {
     return (
-        <section className="py-20 bg-background">
+        <section id="menu" className="py-24 bg-background relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl font-serif font-bold text-foreground mb-4">Our Specialties</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto">
-                        Crafted with passion using the finest imported Italian ingredients and locally sourced produce.
-                    </p>
+                <div className="text-center mb-16 space-y-4">
+                    <span className="text-primary text-sm tracking-[0.2em] uppercase">Culinary Masterpieces</span>
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
+                        Signature <span className="text-primary">Dishes</span>
+                    </h2>
+                    <div className="w-20 h-0.5 bg-primary mx-auto"></div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {menuItems.map((item) => (
-                        <div key={item.id} className="group bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border/50">
-                            <div className="aspect-[4/3] overflow-hidden">
-                                <img
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {menuItems.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            className="group relative bg-card/30 backdrop-blur-sm border border-white/5 rounded-lg overflow-hidden hover:border-primary/30 transition-all duration-500 hover:-translate-y-2"
+                        >
+                            <div className="relative h-64 overflow-hidden">
+                                <Image
                                     src={item.image}
                                     alt={item.name}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
                             </div>
-                            <div className="p-6">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="text-xl font-serif font-bold text-foreground">{item.name}</h3>
-                                    <span className="text-primary font-bold">{item.price}</span>
+
+                            <div className="p-6 relative">
+                                <div className="flex justify-between items-baseline mb-2">
+                                    <h3 className="text-xl font-serif font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                                        {item.name}
+                                    </h3>
+                                    <span className="text-primary font-bold font-serif text-lg">{item.price}</span>
                                 </div>
-                                <p className="text-muted-foreground text-sm mb-4">{item.description}</p>
-                                <Button variant="link" className="p-0 h-auto text-primary hover:text-primary/80">
-                                    Order Now &rarr;
-                                </Button>
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                                    {item.description}
+                                </p>
+                                <button className="w-full py-2 border border-white/10 text-xs uppercase tracking-wider hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 rounded-sm">
+                                    Order Now
+                                </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className="text-center mt-12">
-                    <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+                <div className="text-center mt-16">
+                    <button className="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 uppercase tracking-widest text-sm font-semibold">
                         View Full Menu
-                    </Button>
+                    </button>
                 </div>
             </div>
         </section>
