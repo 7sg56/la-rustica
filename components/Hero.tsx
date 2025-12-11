@@ -11,78 +11,88 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+    <section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Parallax Background */}
       <motion.div
         style={{ y, opacity }}
         className="absolute inset-0 z-0"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{ backgroundImage: "url('/img/hero-bg.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
       </motion.div>
 
-      <div className="relative z-10 px-4 max-w-5xl mx-auto space-y-8">
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center z-10 flex flex-col items-center justify-center h-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="space-y-6"
         >
-          <span className="inline-block py-1 px-3 rounded-full border border-primary/50 bg-primary/10 text-primary text-sm tracking-[0.2em] uppercase mb-6 backdrop-blur-sm">
-            Est. 1985
-          </span>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold tracking-tighter text-white drop-shadow-2xl mb-2">
-            La <span className="text-gradient-gold italic">Rustica</span>
+          <div className="overflow-hidden">
+            <motion.p
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-primary text-sm md:text-base tracking-[0.3em] uppercase font-medium"
+            >
+              Est. 1985 &bull; Florence, Italy
+            </motion.p>
+          </div>
+
+          <h1 className="text-7xl md:text-9xl font-serif text-white tracking-tighter leading-none mix-blend-screen">
+            <span className="block text-white/90">La</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F1C40F] to-[#D4AF37] italic pr-2">
+              Rustica
+            </span>
           </h1>
-          <div className="h-1 w-24 bg-primary mx-auto rounded-full mb-6"></div>
-        </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="text-xl md:text-2xl font-light tracking-wide text-gray-200 max-w-2xl mx-auto leading-relaxed"
-        >
-          Where culinary tradition meets modern elegance. <br className="hidden md:block" />
-          Experience the essence of Italy in every bite.
-        </motion.p>
+          <p className="max-w-xl mx-auto text-lg md:text-2xl text-white/80 font-light leading-relaxed font-sans">
+            An authentic culinary journey where tradition meets modern elegance.
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
-        >
-          <Link
-            href="#reservation"
-            className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold overflow-hidden rounded-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.5)]"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="pt-10 flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <span className="relative z-10 uppercase tracking-widest text-sm">Book a Table</span>
-            <div className="absolute inset-0 h-full w-full scale-0 rounded-sm transition-all duration-300 group-hover:scale-100 group-hover:bg-white/10"></div>
-          </Link>
-          <Link
-            href="#menu"
-            className="group px-8 py-4 bg-transparent border border-white/30 text-white font-semibold rounded-sm hover:bg-white/5 hover:border-white transition-all duration-300 backdrop-blur-sm"
-          >
-            <span className="uppercase tracking-widest text-sm">View Menu</span>
-          </Link>
+            <Link
+              href="#reservation"
+              className="group relative px-10 py-4 bg-[#D4AF37] text-black font-bold uppercase tracking-widest text-sm overflow-hidden transition-all hover:bg-[#F1C40F]"
+            >
+              <span className="relative z-10">Book a Table</span>
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+            </Link>
+
+            <Link
+              href="#menu"
+              className="group relative px-10 py-4 border border-white/20 text-white font-bold uppercase tracking-widest text-sm overflow-hidden hover:border-white/50 transition-colors backdrop-blur-sm"
+            >
+              <span className="relative z-10">View Menu</span>
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-        </svg>
+        <span className="text-[10px] uppercase tracking-widest">Scroll</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0"></div>
       </motion.div>
     </section>
   );

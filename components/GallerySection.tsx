@@ -2,15 +2,19 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Toast } from '@/components/ui/simple-toast';
 
 const galleryImages = [
-    { src: '/img/interior-1.png', alt: 'Restaurant Interior Detail', span: 'col-span-1 md:col-span-2' },
-    { src: '/img/italian_pizza.png', alt: 'Signature Pizza', span: 'col-span-1' },
-    { src: '/img/interior-2.png', alt: 'Bar Area', span: 'col-span-1' },
-    { src: '/img/pasta_carbonara.png', alt: 'Classic Carbonara', span: 'col-span-1 md:col-span-2' },
+    { src: '/img/interior-1.png', alt: 'Main Dining Hall', span: 'col-span-1 md:col-span-2' },
+    { src: '/img/restaurant_candlelight.png', alt: 'Candlelight Evenings', span: 'col-span-1' },
+    { src: '/img/interior-2.png', alt: 'The Bar', span: 'col-span-1' },
+    { src: '/img/hero-bg.png', alt: 'Private Dining', span: 'col-span-1 md:col-span-2' },
 ];
 
 export function GallerySection() {
+    const [showToast, setShowToast] = useState(false);
+
     return (
         <section id="gallery" className="py-24 bg-black relative">
             <div className="container mx-auto px-4">
@@ -24,7 +28,10 @@ export function GallerySection() {
                             Experience the perfect blend of rustic charm and modern elegance. Every corner is designed to transport you to Italy.
                         </p>
                     </div>
-                    <button className="text-white border-b border-primary pb-1 hover:text-primary transition-colors uppercase tracking-widest text-xs">
+                    <button
+                        onClick={() => setShowToast(true)}
+                        className="text-white border-b border-primary pb-1 hover:text-primary transition-colors uppercase tracking-widest text-xs"
+                    >
                         View Full Gallery
                     </button>
                 </div>
@@ -53,6 +60,11 @@ export function GallerySection() {
                     ))}
                 </div>
             </div>
+            <Toast
+                message="Opening full gallery..."
+                isVisible={showToast}
+                onClose={() => setShowToast(false)}
+            />
         </section>
     );
 }

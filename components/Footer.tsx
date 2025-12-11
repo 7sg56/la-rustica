@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 export function Footer() {
     return (
-        <footer className="bg-black border-t border-white/10 pt-20 pb-10">
+        <footer id="contact" className="bg-black border-t border-white/10 pt-20 pb-10">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div className="space-y-6">
@@ -14,13 +14,13 @@ export function Footer() {
                             Authentic Italian cuisine served with passion and elegance. Experience the true taste of Italy in every bite.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-primary-foreground transition-colors">
+                            <a href="https://instagram.com/la-rustica" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-primary-foreground transition-colors">
                                 <Instagram size={18} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-primary-foreground transition-colors">
+                            <a href="https://facebook.com/la-rustica" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-primary-foreground transition-colors">
                                 <Facebook size={18} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-primary-foreground transition-colors">
+                            <a href="https://twitter.com/la-rustica" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-primary-foreground transition-colors">
                                 <Twitter size={18} />
                             </a>
                         </div>

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export function AboutSection() {
   return (
@@ -58,10 +59,12 @@ export function AboutSection() {
           </p>
 
           <div className="pt-4">
-            <button className="group relative px-8 py-3 bg-transparent border border-primary text-primary overflow-hidden transition-all duration-300 hover:text-primary-foreground">
-              <span className="relative z-10 uppercase tracking-widest text-sm font-bold">Read Our Story</span>
-              <div className="absolute inset-0 h-full w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            </button>
+            <Link href="/story" className="inline-block">
+              <button className="group relative px-8 py-3 bg-transparent border border-primary text-primary overflow-hidden transition-all duration-300 hover:text-primary-foreground">
+                <span className="relative z-10 uppercase tracking-widest text-sm font-bold">Read Our Story</span>
+                <div className="absolute inset-0 h-full w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>
