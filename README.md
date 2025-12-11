@@ -1,4 +1,4 @@
-# La Rustica - 
+# La Rustica
 
 ![Hero Preview](public/hero-image.png)
 
