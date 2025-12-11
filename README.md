@@ -1,6 +1,6 @@
-# La Rustica - Premium Italian Restaurant Website
+# La Rustica - 
 
-![Hero Preview](public/img/story-hero.png)
+![Hero Preview](public/hero-image.png)
 
 A modern, high-performance website for **La Rustica**, a fictional authentic Italian restaurant. Built with **Next.js 16**, **Tailwind CSS**, and **Framer Motion**, this project demonstrates a premium digital presence with smooth animations, interactive menus, and a storytelling-driven user experience.
 
