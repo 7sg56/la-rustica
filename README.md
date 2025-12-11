@@ -26,7 +26,7 @@ A modern, high-performance website for **La Rustica**, a fictional authentic Ita
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/la-rustica.git
+    git clone https://github.com/7sg56/la-rustica.git
     cd la-rustica
     ```
 
@@ -40,12 +40,6 @@ A modern, high-performance website for **La Rustica**, a fictional authentic Ita
     npm run dev
     ```
     Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-## 📦 Deployment
-
-The application is production-ready and can be deployed easily on [Vercel](https://vercel.com) or [Netlify](https://netlify.com).
-
-See [DEPLOY.md](./deploy.md) for detailed deployment instructions.
 
 ## 📄 License
 
